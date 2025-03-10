@@ -30,7 +30,7 @@ fun SendPost(handlePost : (String) -> Unit) {
     ) {
         OutlinedTextField(
             value = text,
-            onValueChange = {text = it.trim()},
+            onValueChange = { text = it },
             shape = RoundedCornerShape(10.dp),
             maxLines = 5,
             label = { Text(stringResource(R.string.post_hint)) },
@@ -39,7 +39,7 @@ fun SendPost(handlePost : (String) -> Unit) {
         Spacer(modifier = Modifier.width(8.dp))
         Button(
             onClick = {
-                handlePost(text)
+                handlePost(text.trim())
                 text = ""
             },
             enabled = text.isNotBlank()
