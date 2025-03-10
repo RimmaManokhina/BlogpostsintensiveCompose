@@ -2,5 +2,6 @@
     <string name="app_name">Blogpostsintensive</string>
     <string name="login">Login</string>
     <string name="post_hint">Enter your text</string>
-    <string name="send">send</string>
+    <string name="send">Send</string>
+    <string name="enter_username">Enter username</string>
 </resources>
