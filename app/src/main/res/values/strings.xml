@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Blogpostsintensive</string>
     <string name="login">Login</string>
-    <string name="noInternet">NO INTERNET CONNECTION</string>
+    <string name="no_internet">NO INTERNET CONNECTION</string>
 </resources>
