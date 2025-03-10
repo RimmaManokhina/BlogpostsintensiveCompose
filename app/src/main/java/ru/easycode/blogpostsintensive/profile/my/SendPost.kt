@@ -44,7 +44,7 @@ fun SendPost(handlePost : (String) -> Unit) {
             },
             enabled = text.isNotBlank()
         ) {
-            Text("send")
+            Text(stringResource(R.string.send))
         }
     }
 }
