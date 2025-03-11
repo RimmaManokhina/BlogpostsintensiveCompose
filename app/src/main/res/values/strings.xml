@@ -4,4 +4,5 @@
     <string name="post_hint">Enter your text</string>
     <string name="send">send</string>
     <string name="no_internet">NO INTERNET CONNECTION</string>
+    <string name="logout">Logout</string>
 </resources>
