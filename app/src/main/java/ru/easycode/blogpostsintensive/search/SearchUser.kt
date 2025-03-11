@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import ru.easycode.blogpostsintensive.R
 
 @Composable
-fun SearchUser() {
+fun SearchUser(onUserSearch: (String) -> Unit) {
     var text by rememberSaveable { mutableStateOf("") }
 
     Row(
@@ -32,10 +32,8 @@ fun SearchUser() {
         OutlinedTextField(
             value = text,
             onValueChange = {
-                val filteredText = it
-                    .replace("\n", "") // removing the enter
-                    .replace(Regex(" {2,}"), " ") // one-space limit
-                text = filteredText
+                text = it
+                onUserSearch.invoke(it)
             },
             shape = RoundedCornerShape(10.dp),
             maxLines = 1,
@@ -55,5 +53,5 @@ fun SearchUser() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSearchUser() {
-    SearchUser()
+    SearchUser() {}
 }
