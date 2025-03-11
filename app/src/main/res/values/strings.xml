@@ -5,4 +5,6 @@
     <string name="send">send</string>
     <string name="no_internet">NO INTERNET CONNECTION</string>
     <string name="enter_username">Enter username</string>
+    <string name="less">Less</string>
+    <string name="more">More</string>
 </resources>
