@@ -26,7 +26,7 @@ fun UserNameUi(
             .fillMaxWidth()
             .padding(4.dp),
         colors = ButtonColors(
-            containerColor = colorResource(R.color.purple_search),
+            containerColor = colorResource(R.color.purple),
             contentColor = colorResource(R.color.black),
             disabledContainerColor = colorResource(R.color.grey),
             disabledContentColor = colorResource(R.color.black)
