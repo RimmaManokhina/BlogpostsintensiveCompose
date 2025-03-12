@@ -19,7 +19,7 @@ class ConnectionViewModel @Inject constructor(
 
     private val connectedMutableStateFlow = MutableStateFlow(false)
 
-    private val connectedStateFlow: StateFlow<Boolean> = connectedMutableStateFlow
+    val connectedStateFlow: StateFlow<Boolean> = connectedMutableStateFlow
 
     private val networkRequest = NetworkRequest.Builder()
         .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
@@ -40,8 +40,7 @@ class ConnectionViewModel @Inject constructor(
             networkCapabilities: NetworkCapabilities
         ) {
             super.onCapabilitiesChanged(network, networkCapabilities)
-            val unmetered =
-                networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)
+
         }
 
         // lost network connection
