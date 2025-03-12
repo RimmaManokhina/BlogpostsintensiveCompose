@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.easycode.blogpostsintensive.R
 import ru.easycode.blogpostsintensive.ui.theme.Blue
-import ru.easycode.blogpostsintensive.ui.theme.Grey
+import ru.easycode.blogpostsintensive.ui.theme.Gray
 
 @Composable
 fun SubscribeButton(
@@ -35,7 +35,7 @@ fun SubscribeButton(
     var isSubscribed by rememberSaveable { mutableStateOf(isSubscribedInitial) }
 
     val backgroundColor by animateColorAsState(
-        targetValue = if (isSubscribed) Blue else Grey,
+        targetValue = if (isSubscribed) Gray else Blue,
         animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy), label = ""
     )
 
