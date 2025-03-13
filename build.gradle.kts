@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.kotlin.jvm) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.android.hilt) apply false
+    id("com.google.gms.google-services") version "4.4.1" apply false
 }

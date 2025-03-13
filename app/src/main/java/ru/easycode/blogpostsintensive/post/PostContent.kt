@@ -1,6 +1,5 @@
 package ru.easycode.blogpostsintensive.post
 
-import android.content.res.Configuration
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -23,13 +22,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.easycode.blogpostsintensive.R
+import ru.easycode.blogpostsintensive.presentation.ScreenPreview
+import ru.easycode.blogpostsintensive.presentation.TextPreviewProvider
 import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 
 /**
@@ -81,40 +79,6 @@ fun PostContent(text: String) {
         }
     }
 }
-
-class TextPreviewProvider : PreviewParameterProvider<String> {
-    override val values = sequenceOf(
-        "Short Text",
-        "A bit longer text. A bit longer text. A bit longer text. A bit longer text.",
-        "This one is really, really long. Like, really long!" +
-                "This one is really, really long. Like, really long!" +
-                "This one is really, really long. Like, really long!" +
-                "This one is really, really long. Like, really long!" +
-                "This one is really, really long. Like, really long!" +
-                "This one is really, really long. Like, really long!"
-    )
-}
-
-@Preview(
-    name = "Default",
-    group = "Default",
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
-    device = Devices.PIXEL_7_PRO
-)
-@Preview(
-    name = "Night theme",
-    group = "Night theme",
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    device = Devices.PIXEL_7_PRO
-)
-@Preview(
-    name = "Small screen",
-    group = "Small screen",
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
-    widthDp = 300,
-    heightDp = 500
-)
-annotation class ScreenPreview
 
 @ScreenPreview
 @Composable
