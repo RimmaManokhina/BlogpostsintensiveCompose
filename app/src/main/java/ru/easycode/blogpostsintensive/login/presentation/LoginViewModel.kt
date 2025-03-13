@@ -17,7 +17,7 @@ class LoginViewModel @Inject constructor(
     runAsync: RunAsync
 ) : BaseViewModel(runAsync) {
 
-    private val _viewState = MutableStateFlow<LoginUiState>(LoginUiState.Initial)
+    private val _viewState = MutableStateFlow<LoginUiState>(LoginUiState.Auth(manageResource))
     val viewState: StateFlow<LoginUiState> = _viewState.asStateFlow()
 
     init {

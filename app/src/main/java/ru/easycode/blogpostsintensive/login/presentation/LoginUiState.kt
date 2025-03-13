@@ -61,6 +61,6 @@ interface LoginUiState {
         @Composable
         override fun Update(viewModel: LoginViewModel) {
             CircularProgressIndicator()
-        }
+        } // TODO: box centred and preview
     }
 }
