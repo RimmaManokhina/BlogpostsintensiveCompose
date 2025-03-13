@@ -17,20 +17,18 @@ class LoginViewModel @Inject constructor(
     runAsync: RunAsync
 ) : BaseViewModel(runAsync) {
 
-    private val _viewState = MutableStateFlow<LoginUiState>(LoginUiState.Auth(manageResource))
+    private val _viewState = MutableStateFlow<LoginUiState>(LoginUiState.Initial)
     val viewState: StateFlow<LoginUiState> = _viewState.asStateFlow()
 
     init {
-        if (repository.userNotLoggedIn())
-            _viewState.value = LoginUiState.Initial
-        else
+        if (!repository.userNotLoggedIn())
             login()
     }
 
-    fun handleResult(authResult: AuthResultWrapper, navigate: () -> Unit) = runAsync({
+    fun handleResult(authResult: AuthResultWrapper) = runAsync({
         repository.handleResult(authResult)
     }) {
-        it.map(_viewState, navigate)
+        it.map(_viewState)
     }
 
     fun login() {

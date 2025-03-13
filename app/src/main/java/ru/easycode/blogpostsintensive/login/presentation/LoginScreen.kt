@@ -7,6 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ru.easycode.blogpostsintensive.presentation.ScreenPreview
@@ -22,15 +23,17 @@ fun LoginScreenInner(navigate: () -> Unit) {
     val activity = LocalActivity.current as Activity
     val authResult =
         rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            viewModel.handleResult(AuthResultWrapper.Base(it), navigate)
+            viewModel.handleResult(AuthResultWrapper.Base(it))
         }
 
+    val currentAuthResult by rememberUpdatedState(authResult)
+
     val state by viewModel.viewState.collectAsStateWithLifecycle()
-    LaunchedEffect(Unit) {
-        state.handle(authResult, activity)
+    state.Update(viewModel, navigate)
+
+    LaunchedEffect(state) {
+        state.handle(currentAuthResult, activity)
     }
-    // TODO:  fix me. not working with no internet
-    state.Update(viewModel)
 }
 
 @ScreenPreview

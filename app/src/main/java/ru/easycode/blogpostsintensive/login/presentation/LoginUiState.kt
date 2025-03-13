@@ -3,10 +3,13 @@ package ru.easycode.blogpostsintensive.login.presentation
 import android.app.Activity
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -20,11 +23,11 @@ interface LoginUiState {
     fun handle(launcher: ActivityResultLauncher<Intent>, activity: Activity) = Unit
 
     @Composable
-    fun Update(viewModel: LoginViewModel) = Unit
+    fun Update(viewModel: LoginViewModel, navigate: () -> Unit) = Unit
 
     object Initial : LoginUiState {
         @Composable
-        override fun Update(viewModel: LoginViewModel) {
+        override fun Update(viewModel: LoginViewModel, navigate: () -> Unit) {
             LoginButton(Modifier) {
                 viewModel.login()
             }
@@ -33,7 +36,7 @@ interface LoginUiState {
 
     data class Error(private val message: String) : LoginUiState {
         @Composable
-        override fun Update(viewModel: LoginViewModel) {
+        override fun Update(viewModel: LoginViewModel, navigate: () -> Unit) {
             Column {
                 Text(text = message)
                 LoginButton(Modifier) {
@@ -59,8 +62,20 @@ interface LoginUiState {
         }
 
         @Composable
-        override fun Update(viewModel: LoginViewModel) {
-            CircularProgressIndicator()
-        } // TODO: box centred and preview
+        override fun Update(viewModel: LoginViewModel, navigate: () -> Unit) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator()
+            }
+        }
+    }
+
+    data object Success : LoginUiState {
+        @Composable
+        override fun Update(viewModel: LoginViewModel, navigate: () -> Unit) {
+            navigate.invoke()
+        }
     }
 }

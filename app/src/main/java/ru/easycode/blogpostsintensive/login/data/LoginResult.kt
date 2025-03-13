@@ -5,21 +5,21 @@ import ru.easycode.blogpostsintensive.login.presentation.LoginUiState
 
 interface LoginResult {
 
-    fun map(viewState: MutableStateFlow<LoginUiState>, navigate: () -> Unit)
+    fun map(viewState: MutableStateFlow<LoginUiState>)
 
     object Success : LoginResult {
 
         override fun map(
             viewState: MutableStateFlow<LoginUiState>,
-            navigate: () -> Unit
-        ) = navigate.invoke()
+        ) {
+            viewState.value = LoginUiState.Success
+        }
     }
 
     data class Failed(private val message: String) : LoginResult {
 
         override fun map(
             viewState: MutableStateFlow<LoginUiState>,
-            navigate: () -> Unit
         ) {
             viewState.value = LoginUiState.Error(message)
         }
