@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.nestednavigationbottombardemo.screens.ScreenContent
+import ru.easycode.blogpostsintensive.subscriptions.SubsScreen
 
 @Composable
 fun HomeNavGraph(navController: NavHostController) {
@@ -21,10 +22,7 @@ fun HomeNavGraph(navController: NavHostController) {
             )
         }
         composable(route = BottomItem.Subs.route) {
-            ScreenContent(
-                name = BottomItem.Subs.route,
-                onClick = { }
-            )
+            SubsScreen()
         }
         composable(route = BottomItem.Search.route) {
             ScreenContent(

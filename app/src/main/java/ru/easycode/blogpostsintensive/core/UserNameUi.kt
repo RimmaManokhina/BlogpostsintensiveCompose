@@ -16,9 +16,9 @@ import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 
 @Composable
 fun UserNameUi(
-    onClick: (Long) -> Unit,
+    onClick: (String) -> Unit,
     userName: String,
-    userId: Long,
+    userId: String,
 ) {
     Button(
         onClick = { onClick.invoke(userId) },
@@ -49,7 +49,7 @@ fun SearchResultUiPreview() {
         UserNameUi(
             {},
             "TestName Jjgfdkjnfdkjgkjbkd Jjgfdkjnfdkjgkjbkd Jjgfdkjnfdkjgkjbkd fsjbfksjdbfksjdbf",
-            897539287523
+            "897539287523"
         )
     }
 }
