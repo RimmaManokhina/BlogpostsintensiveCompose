@@ -6,11 +6,13 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ru.easycode.blogpostsintensive.cloudservice.Auth
 import ru.easycode.blogpostsintensive.cloudservice.MyUser
+import ru.easycode.blogpostsintensive.cloudservice.ProvideDatabase
 import ru.easycode.blogpostsintensive.cloudservice.Service
 import ru.easycode.blogpostsintensive.core.ManageResource
 import ru.easycode.blogpostsintensive.core.RunAsync
 import ru.easycode.blogpostsintensive.login.data.LoginCloudDataSource
 import ru.easycode.blogpostsintensive.login.data.LoginRepository
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -50,4 +52,10 @@ abstract class LoginModule() {
     abstract fun bindsService(
         service: Service.Base
     ): Service
+
+    @Singleton
+    @Binds
+    abstract fun bindsProvideDatabase(
+        provide: ProvideDatabase.Base
+    ): ProvideDatabase
 }

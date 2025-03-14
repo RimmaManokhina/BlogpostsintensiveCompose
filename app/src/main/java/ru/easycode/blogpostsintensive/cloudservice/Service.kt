@@ -1,13 +1,11 @@
 package ru.easycode.blogpostsintensive.cloudservice
 
-import android.content.Context
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -77,9 +75,9 @@ interface Service {
         path: String, clasz: Class<T>,
     ): List<Pair<String, T>>
 
-    class Base @Inject constructor(@ApplicationContext context: Context) : Service {
+    class Base @Inject constructor(provideDatabase: ProvideDatabase) : Service {
 
-        private val database = ProvideDatabase.Base(context).database()
+        private val database = provideDatabase.database()
 
         override fun remove(path: String, child: String) {
             database.child(path).child(child).removeValue()
@@ -170,7 +168,7 @@ interface Service {
                 .child(path)
                 .orderByKey()
                 .equalTo(queryValue)
-                return handleQuery(query, clasz)
+            return handleQuery(query, clasz)
         }
 
         override suspend fun <T : Any> getByQuery(

@@ -8,7 +8,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.easycode.blogpostsintensive.R
@@ -34,9 +33,10 @@ fun UserNameUi(
     ) {
         Text(
             text = userName,
-            modifier = Modifier.padding(4.dp),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            maxLines = 2
         )
     }
 }

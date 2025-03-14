@@ -1,4 +1,4 @@
-package ru.easycode.blogpostsintensive.search
+package ru.easycode.blogpostsintensive.search.presentation
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import ru.easycode.blogpostsintensive.R
 
 @Composable
-fun SearchUser(onUserSearch: (String) -> Unit) {
+fun SearchUserField(onUserSearch: (String) -> Unit) {
     var text by rememberSaveable { mutableStateOf("") }
 
     OutlinedTextField(
@@ -49,5 +49,5 @@ fun SearchUser(onUserSearch: (String) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun PreviewSearchUser() {
-    SearchUser() {}
+    SearchUserField() {}
 }
