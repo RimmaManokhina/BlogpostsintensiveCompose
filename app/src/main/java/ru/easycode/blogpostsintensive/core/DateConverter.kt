@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
+import javax.inject.Inject
 
 interface DateConverter {
 
@@ -11,8 +12,8 @@ interface DateConverter {
 
     fun convertToLocal(date: Long): String
 
-    class Base(
-        pattern: String = "HH:mm dd MMMM yyyy",
+    class Base @Inject constructor(
+        pattern: String,
         locale: Locale
     ) : DateConverter {
 
