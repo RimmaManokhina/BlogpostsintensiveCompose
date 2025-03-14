@@ -11,20 +11,26 @@ import ru.easycode.blogpostsintensive.login.presentation.LoginScreenInner
 fun RootNavigationGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Graph.LOGINSCREEN
+        startDestination = Graph.LOGIN
     ) {
         composable(route = Graph.HOME) {
-            HomeScreen()
+            HomeScreen(navController)
         }
-        composable(route = Graph.LOGINSCREEN) {
+        composable(route = Graph.LOGIN) {
             LoginScreen(navController)
+        }
+        composable(route = "otherProfile/{id}") { navBackStackEntry ->
+            val uId = navBackStackEntry.arguments?.getString("id")
+            uId?.let { id ->
+                UserProfileScreen(id = id, onClick = {})
+            }
         }
     }
 }
 
 object Graph {
-    const val HOME = "home_graph"
-    const val LOGINSCREEN = "login_screen"
+    const val HOME = "home_screen"
+    const val LOGIN = "login_screen"
 }
 
 @Composable

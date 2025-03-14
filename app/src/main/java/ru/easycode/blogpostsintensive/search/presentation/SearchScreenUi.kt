@@ -12,9 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 
 @Composable
-fun SearchScreen() {
+fun SearchScreen(navController: NavController) {
     val viewModel: SearchViewModel = hiltViewModel()
     val users by viewModel.foundUsers.collectAsState()
 
@@ -32,7 +33,7 @@ fun SearchScreen() {
         LazyColumn(modifier = Modifier.padding(8.dp)) {
             items(users.size) { index ->
                 val user = users[index]
-                user.Show(onClick = { userId -> /* Handle click event here */ })
+                user.Show(onClick = { userId -> navController.navigate("otherProfile/$userId") })
             }
         }
     }

@@ -22,11 +22,12 @@ import ru.easycode.blogpostsintensive.R
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavHostController = rememberNavController()) {
+fun HomeScreen(navController: NavHostController) {
+    val bottomNavController: NavHostController = rememberNavController()
     Scaffold(
-        bottomBar = { BottomBar(navController = navController) }
+        bottomBar = { BottomBar(navController = bottomNavController) }
     ) {
-        HomeNavGraph(navController = navController)
+        HomeNavGraph(bottomNavController, navController)
     }
 }
 
