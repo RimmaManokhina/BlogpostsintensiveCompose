@@ -1,8 +1,8 @@
-package ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.presentation
+package ru.easycode.blogpostsintensive.profile.presentation
 
 import androidx.compose.runtime.Composable
 import ru.easycode.blogpostsintensive.post.PostContent
-import ru.easycode.blogpostsintensive.presentation.PostData
+import ru.easycode.blogpostsintensive.post.domain.PostData
 
 interface BlogPostUi : PostData {
 

@@ -1,4 +1,4 @@
-package ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.presentation
+package ru.easycode.blogpostsintensive.profile.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.easycode.blogpostsintensive.presentation.ScreenPreview
+import ru.easycode.blogpostsintensive.core.ScreenPreview
 import ru.easycode.blogpostsintensive.profile.my.MyProfileAndLogOut
 import ru.easycode.blogpostsintensive.profile.my.SendPost
 import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme

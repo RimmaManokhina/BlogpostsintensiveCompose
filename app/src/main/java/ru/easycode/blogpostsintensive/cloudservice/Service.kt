@@ -20,8 +20,6 @@ interface Service {
         fun error(message: String)
     }
 
-    fun remove(path: String, child: String)
-
     fun <T : Any> startListen(
         path: String, clasz: Class<T>,
         callback: Callback<T>,
@@ -29,25 +27,10 @@ interface Service {
 
     fun <T : Any> getByQueryAsync(
         path: String,
-        queryKey: String,
         queryValue: String,
         clasz: Class<T>,
         callback: Callback<T>,
     )
-
-    fun <T : Any> getByQueryAsync(
-        path: String,
-        queryValue: String,
-        clasz: Class<T>,
-        callback: Callback<T>,
-    )
-
-    suspend fun <T : Any> getByQuery(
-        path: String,
-        queryKey: String,
-        queryValue: String,
-        clasz: Class<T>,
-    ): List<Pair<String, T>>
 
     suspend fun <T : Any> getByQueryStartWith(
         path: String,
@@ -59,15 +42,10 @@ interface Service {
 
     suspend fun <T : Any> getByQueryValue(
         path: String,
-        queryValue: String,
         clasz: Class<T>,
     ): List<Pair<String, T>>
 
-    fun updateField(path: String, child: String, fieldId: String, fieldValue: Any)
-
     fun postFirstLevelAsync(path: String, obj: Any)
-
-    suspend fun postFirstLevel(path: String, obj: Any): String
 
     suspend fun createWithId(path: String, id: String, value: Any)
 
@@ -78,10 +56,6 @@ interface Service {
     class Base @Inject constructor(provideDatabase: ProvideDatabase) : Service {
 
         private val database = provideDatabase.database()
-
-        override fun remove(path: String, child: String) {
-            database.child(path).child(child).removeValue()
-        }
 
         override fun <T : Any> startListen(path: String, clasz: Class<T>, callback: Callback<T>) {
             database.child(path).addValueEventListener(object : ValueEventListener {
@@ -96,39 +70,6 @@ interface Service {
                     callback.error(error.message)
                 }
             })
-        }
-
-        override fun updateField(path: String, child: String, fieldId: String, fieldValue: Any) {
-            database
-                .child(path)
-                .child(child)
-                .child(fieldId)
-                .setValue(fieldValue)
-        }
-
-        override fun <T : Any> getByQueryAsync(
-            path: String,
-            queryKey: String,
-            queryValue: String,
-            clasz: Class<T>,
-            callback: Callback<T>,
-        ) {
-            database
-                .child(path)
-                .orderByChild(queryKey)
-                .equalTo(queryValue)
-                .addValueEventListener(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val data = snapshot.children.mapNotNull {
-                            Pair(it.key!!, it.getValue(clasz)!!)
-                        }
-                        callback.provide(data)
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        callback.error(error.message)
-                    }
-                })
         }
 
         override fun <T : Any> getByQueryAsync(
@@ -161,26 +102,11 @@ interface Service {
 
         override suspend fun <T : Any> getByQueryValue(
             path: String,
-            queryValue: String,
-            clasz: Class<T>,
-        ): List<Pair<String, T>>  {
-            val query = database
-                .child(path)
-                .orderByKey()
-                .equalTo(queryValue)
-            return handleQuery(query, clasz)
-        }
-
-        override suspend fun <T : Any> getByQuery(
-            path: String,
-            queryKey: String,
-            queryValue: String,
             clasz: Class<T>,
         ): List<Pair<String, T>> {
             val query = database
                 .child(path)
-                .orderByChild(queryKey)
-                .equalTo(queryValue)
+                .orderByKey()
             return handleQuery(query, clasz)
         }
 
@@ -221,13 +147,6 @@ interface Service {
 
         override fun postFirstLevelAsync(path: String, obj: Any) {
             database.child(path).push().setValue(obj)
-        }
-
-        override suspend fun postFirstLevel(path: String, obj: Any): String {
-            val reference = database.child(path).push()
-            val task = reference.setValue(obj)
-            handleResult(task)
-            return reference.key!!
         }
 
         override suspend fun createWithId(path: String, id: String, value: Any) {

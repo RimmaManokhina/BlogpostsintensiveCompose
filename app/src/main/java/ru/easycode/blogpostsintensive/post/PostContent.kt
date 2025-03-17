@@ -26,8 +26,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.easycode.blogpostsintensive.R
-import ru.easycode.blogpostsintensive.presentation.ScreenPreview
-import ru.easycode.blogpostsintensive.presentation.TextPreviewProvider
+import ru.easycode.blogpostsintensive.core.ScreenPreview
+import ru.easycode.blogpostsintensive.core.TextPreviewProvider
 import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 
 /**

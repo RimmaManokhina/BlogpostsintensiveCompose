@@ -1,4 +1,4 @@
-package ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.presentation
+package ru.easycode.blogpostsintensive.profile.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue

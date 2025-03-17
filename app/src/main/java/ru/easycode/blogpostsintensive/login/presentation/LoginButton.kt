@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import ru.easycode.blogpostsintensive.R
-import ru.easycode.blogpostsintensive.presentation.ScreenPreview
+import ru.easycode.blogpostsintensive.core.ScreenPreview
 import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 
 @Composable

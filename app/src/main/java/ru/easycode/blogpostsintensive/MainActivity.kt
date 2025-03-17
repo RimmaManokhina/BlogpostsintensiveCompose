@@ -15,8 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.easycode.blogpostsintensive.core.ConnectionViewModel
 import ru.easycode.blogpostsintensive.core.NoInternet
+import ru.easycode.blogpostsintensive.core.ScreenPreview
 import ru.easycode.blogpostsintensive.navigation.RootNavigationGraph
-import ru.easycode.blogpostsintensive.presentation.ScreenPreview
 import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 
 @AndroidEntryPoint

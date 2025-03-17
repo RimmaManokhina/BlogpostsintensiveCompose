@@ -10,8 +10,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import ru.easycode.blogpostsintensive.presentation.ScreenPreview
-import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 
 /**
  * @author DaisyBell on 12.03.2025
@@ -33,14 +31,5 @@ fun LoginScreenInner(navigate: () -> Unit) {
 
     LaunchedEffect(state) {
         state.handle(currentAuthResult, activity)
-    }
-}
-
-@ScreenPreview
-@Composable
-fun LoginScreenPreview() {
-    BlogpostsintensiveTheme {
-        LoginScreenInner(
-        ) {}
     }
 }

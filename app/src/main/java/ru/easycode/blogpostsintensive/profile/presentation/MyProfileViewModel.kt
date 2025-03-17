@@ -1,4 +1,4 @@
-package ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.presentation
+package ru.easycode.blogpostsintensive.profile.presentation
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -8,7 +8,7 @@ import ru.easycode.blogpostsintensive.core.RunAsync
 import ru.easycode.blogpostsintensive.core.UserMapper
 import ru.easycode.blogpostsintensive.domain.BlogPost
 import ru.easycode.blogpostsintensive.profile.domain.CreatePost
-import ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.domain.MyProfileRepository
+import ru.easycode.blogpostsintensive.profile.domain.MyProfileRepository
 import javax.inject.Inject
 
 @HiltViewModel

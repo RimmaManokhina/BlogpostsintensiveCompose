@@ -1,4 +1,4 @@
-package ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.domain
+package ru.easycode.blogpostsintensive.profile.domain
 
 import ru.easycode.blogpostsintensive.domain.BlogPost
 

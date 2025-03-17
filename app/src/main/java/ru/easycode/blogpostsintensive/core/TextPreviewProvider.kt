@@ -1,4 +1,4 @@
-package ru.easycode.blogpostsintensive.presentation
+package ru.easycode.blogpostsintensive.core
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Devices

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.presentation.MyProfileScreen
+import ru.easycode.blogpostsintensive.profile.presentation.MyProfileScreen
 import ru.easycode.blogpostsintensive.search.presentation.SearchScreen
 import ru.easycode.blogpostsintensive.subscriptions.SubsScreen
 

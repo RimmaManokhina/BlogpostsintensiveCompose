@@ -21,14 +21,11 @@ interface MyUser : UserNotLoggedIn {
 
         override fun checkDataInvalid(): Boolean {
             val notValid = userNotLoggedIn()
-//            if (notValid)
-//                navigation.navigateToLoginScreen()
             return notValid
         }
 
         override fun signOut() {
             Firebase.auth.signOut()
-//            navigation.navigateToLoginScreen()
         }
 
         override fun id() = if (checkDataInvalid()) "" else user()!!.uid
@@ -54,8 +51,3 @@ interface MyUser : UserNotLoggedIn {
         private fun user(): FirebaseUser? = Firebase.auth.currentUser
     }
 }
-
-//interface NavigateToLoginScreen {
-//
-//    fun navigateToLoginScreen()
-//}
