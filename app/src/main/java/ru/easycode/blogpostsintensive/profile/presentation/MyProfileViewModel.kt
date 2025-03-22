@@ -49,7 +49,7 @@ internal class MyProfileViewModel @Inject constructor(
 
 class BaseBlogPostMapper @Inject constructor() : BlogPost.Mapper<BlogPostUi> {
 
-    override fun toBase(text: String) = BlogPostUi.Base(
+    override fun toBase(id: String, ownerId: String, text: String) = BlogPostUi.Base(
         message = text,
     )
 }

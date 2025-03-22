@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import ru.easycode.blogpostsintensive.navigation.navigateToOtherProfile
 
 @Composable
 fun SearchScreen(navController: NavController) {
@@ -33,7 +34,12 @@ fun SearchScreen(navController: NavController) {
         LazyColumn(modifier = Modifier.padding(8.dp)) {
             items(users.size) { index ->
                 val user = users[index]
-                user.Show(onClick = { userId -> navController.navigate("otherProfile/$userId") })
+                user.Show(onClick = { userId ->
+                    navController.navigateToOtherProfile(
+                        userId = userId,
+                        userName = users[index].userName()
+                    )
+                })
             }
         }
     }

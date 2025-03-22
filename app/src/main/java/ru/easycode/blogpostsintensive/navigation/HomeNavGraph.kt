@@ -19,7 +19,7 @@ fun HomeNavGraph(bottomNavController: NavHostController, navController: NavHostC
             MyProfileScreen(navController)
         }
         composable(route = BottomItem.Subs.route) {
-            SubsScreen()
+            SubsScreen(navController)
         }
         composable(route = BottomItem.Search.route) {
             SearchScreen(navController)

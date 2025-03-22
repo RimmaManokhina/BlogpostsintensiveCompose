@@ -1,4 +1,4 @@
-package ru.easycode.blogpostsintensive.profile.other
+package ru.easycode.blogpostsintensive.profile.other.presentation
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -33,6 +34,10 @@ fun SubscribeButton(
     onSubscriptionChange: (Boolean) -> Unit
 ) {
     var isSubscribed by rememberSaveable { mutableStateOf(isSubscribedInitial) }
+
+    LaunchedEffect(isSubscribedInitial) {
+        isSubscribed = isSubscribedInitial
+    }
 
     val backgroundColor by animateColorAsState(
         targetValue = if (isSubscribed) Gray else Blue,

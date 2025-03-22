@@ -9,6 +9,8 @@ interface SearchUserCard {
     @Composable
     fun Show(onClick: (String) -> Unit)
 
+    fun userName(): String
+
     data class Base(
         private val id: String,
         private val text: String
@@ -22,6 +24,8 @@ interface SearchUserCard {
                 userName = text
             )
         }
+
+        override fun userName(): String = text
     }
 }
 

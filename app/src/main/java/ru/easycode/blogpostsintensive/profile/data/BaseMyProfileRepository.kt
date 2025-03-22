@@ -20,14 +20,20 @@ class BaseMyProfileRepository @Inject constructor(
         val myUserId = myUser.id()
         val postClouds = service.get(path = "posts_$myUserId", clasz = PostCloud::class.java)
         postsCount = postClouds.size
-        val list = postClouds.map { (_, postCloud) ->
-            val userProfile = service.getByQueryValue(
-                "users",
-                UserProfileCloud::class.java
-            ).first().second
-            userProfile.name
-
+        val list = postClouds.map { (postId, postCloud) ->
+            val isMyPost = postCloud.ownerId == myUserId
+            if (!isMyPost) {
+                val userProfile = service.getByQueryValue(
+                    "users",
+                    UserProfileCloud::class.java
+                ).first().second
+                userProfile.name
+            } else {
+                myUser.profile().second
+            }
             BlogPost.Base(
+                id = postId,
+                ownerId = postCloud.ownerId,
                 text = postCloud.post,
             )
         }
@@ -42,6 +48,7 @@ class BaseMyProfileRepository @Inject constructor(
         service.postFirstLevelAsync(
             path = "posts_${myUser.id()}",
             obj = PostCloud(
+                ownerId = myUser.id(),
                 post = text,
             )
         )
