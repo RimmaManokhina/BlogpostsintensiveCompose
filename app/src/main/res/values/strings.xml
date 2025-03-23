@@ -3,12 +3,12 @@
     <string name="your_web_client_id" translatable="false" tools:ignore="TypographyDashes">982641417439-is8uk1kj580au1pqncv5du04e2t985dk.apps.googleusercontent.com</string>
     <string name="login">Login</string>
     <string name="post_hint">Enter your text</string>
-    <string name="send">send</string>
+    <string name="send">Send</string>
     <string name="no_internet">NO INTERNET CONNECTION</string>
     <string name="enter_username">Enter username</string>
     <string name="unsubscribe">Unsubscribe</string>
     <string name="subscribe">Subscribe</string>
     <string name="less">Less</string>
     <string name="more">More</string>
-    <string name="logout">logout</string>
+    <string name="logout">Logout</string>
 </resources>

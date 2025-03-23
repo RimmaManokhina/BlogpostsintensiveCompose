@@ -22,7 +22,11 @@ fun SearchScreen(navController: NavController) {
 
     val isLoading by viewModel.isLoading.collectAsState()
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(8.dp)
+        .padding(vertical = 288.dp)
+    ) {
         SearchUserField { query ->
             viewModel.findUsers(query)
         }
@@ -31,7 +35,11 @@ fun SearchScreen(navController: NavController) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
         }
 
-        LazyColumn(modifier = Modifier.padding(8.dp)) {
+        LazyColumn(
+            modifier = Modifier
+                .padding(8.dp)
+                .padding(vertical = 36.dp)
+        ) {
             items(users.size) { index ->
                 val user = users[index]
                 user.Show(onClick = { userId ->

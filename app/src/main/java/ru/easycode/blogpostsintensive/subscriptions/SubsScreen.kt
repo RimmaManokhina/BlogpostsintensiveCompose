@@ -19,7 +19,11 @@ fun SubsScreen(navController: NavController) {
 
     val subsList by viewModel.subscribedUsers.collectAsStateWithLifecycle()
 
-    LazyColumn(modifier = Modifier.padding(8.dp)) {
+    LazyColumn(
+        modifier = Modifier
+            .padding(8.dp)
+            .padding(vertical = 36.dp)
+    ) {
         items(subsList.size) {
             UserNameUi(
                 onClick = { userId ->
