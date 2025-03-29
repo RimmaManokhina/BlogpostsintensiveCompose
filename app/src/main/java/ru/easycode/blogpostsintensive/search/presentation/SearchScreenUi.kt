@@ -22,10 +22,10 @@ fun SearchScreen(navController: NavController) {
 
     val isLoading by viewModel.isLoading.collectAsState()
 
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(8.dp)
-        .padding(vertical = 288.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 36.dp)
     ) {
         SearchUserField { query ->
             viewModel.findUsers(query)

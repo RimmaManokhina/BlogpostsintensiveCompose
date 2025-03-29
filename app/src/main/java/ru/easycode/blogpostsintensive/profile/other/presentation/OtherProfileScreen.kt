@@ -43,7 +43,8 @@ fun OtherProfileScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.LightGray)
-            .padding(16.dp)
+            .padding(8.dp)
+            .padding(vertical = 36.dp)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
