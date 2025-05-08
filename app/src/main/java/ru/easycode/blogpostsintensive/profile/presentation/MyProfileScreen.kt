@@ -29,6 +29,7 @@ fun MyProfileScreen(
                 }
             }
         },
-        blogPostUiList = state
+        myPosts = state,
+        deletePost = { viewModel.deletePost(it) }
     )
 }

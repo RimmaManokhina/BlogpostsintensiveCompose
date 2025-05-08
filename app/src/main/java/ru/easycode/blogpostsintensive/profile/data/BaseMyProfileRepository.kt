@@ -55,6 +55,11 @@ class BaseMyProfileRepository @Inject constructor(
         return init()
     }
 
+    override suspend fun deletePost(postId: String): List<BlogPost> {
+        service.remove("posts_${myUser.id()}", postId)
+        return init()
+    }
+
     override fun logout() {
         myUser.signOut()
     }

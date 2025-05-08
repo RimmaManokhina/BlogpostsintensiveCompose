@@ -6,7 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ru.easycode.blogpostsintensive.domain.BlogPost
 import ru.easycode.blogpostsintensive.profile.presentation.BaseBlogPostMapper
-import ru.easycode.blogpostsintensive.profile.presentation.BlogPostUi
+import ru.easycode.blogpostsintensive.profile.presentation.MyPost
 
 /**
  * @author DaisyBell on 14.03.2025
@@ -16,5 +16,5 @@ import ru.easycode.blogpostsintensive.profile.presentation.BlogPostUi
 object MyProfileProvidesModule {
 
     @Provides
-    fun provideBlogPostMapper(): BlogPost.Mapper<BlogPostUi> = BaseBlogPostMapper()
+    fun provideBlogPostMapper(): BlogPost.Mapper<MyPost> = BaseBlogPostMapper()
 }

@@ -24,8 +24,10 @@ fun MyProfileContent(
     userName: String,
     clickSendPost: (String) -> Unit,
     logout: () -> Unit,
-    blogPostUiList: List<BlogPostUi>
+    myPosts: List<MyPost>,
+    deletePost: (String) -> Unit
 ) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -34,8 +36,8 @@ fun MyProfileContent(
     ) {
         MyProfileAndLogOut(name = userName, logout)
         LazyColumn(modifier = Modifier.weight(1f)) {
-            items(blogPostUiList.size) {
-                blogPostUiList[it].Show()
+            items(myPosts.count()) { index ->
+                myPosts[index].Show(deletePost)
             }
         }
         SendPost(handlePost = clickSendPost)
@@ -54,11 +56,16 @@ fun MyProfileScreenPreview() {
             userName = "userName",
             clickSendPost = {},
             logout = {},
-            blogPostUiList = listOf(
-                BlogPostUi.Base(
-                    message = "message",
+            myPosts = listOf(
+                MyPost.Base(
+                    BlogPostUi.Base(
+                        message = "message",
+                        id = "14",
+                        ownerId = "5"
+                    )
                 )
-            )
+            ),
+            deletePost = {}
         )
     }
 }
