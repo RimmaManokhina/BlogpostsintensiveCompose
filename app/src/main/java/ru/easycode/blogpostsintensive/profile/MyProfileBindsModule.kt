@@ -8,6 +8,8 @@ import ru.easycode.blogpostsintensive.core.UserMapper
 import ru.easycode.blogpostsintensive.domain.BlogPost
 import ru.easycode.blogpostsintensive.profile.data.BaseMyProfileRepository
 import ru.easycode.blogpostsintensive.profile.domain.MyProfileRepository
+import ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.core.DateConverter
+import ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.core.ProvideLocal
 
 /**
  * @author DaisyBell on 14.03.2025
@@ -31,4 +33,13 @@ abstract class MyProfileBindsModule {
         blogPost: BlogPost.Base
     ): BlogPost
 
+    @Binds
+    abstract fun bindsDateConverter(
+        dataConverter: DateConverter.Base
+    ): DateConverter
+
+    @Binds
+    abstract fun bindsProvideLocale(
+        locale: ProvideLocal.Base
+    ): ProvideLocal
 }

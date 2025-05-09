@@ -17,10 +17,10 @@ fun MyProfileScreen(
     val viewModel = hiltViewModel<MyProfileViewModel>()
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
+    val editState by viewModel.editState.collectAsStateWithLifecycle()
 
     MyProfileContent(
         userName = viewModel.userInfo(),
-        clickSendPost = { viewModel.createPost(it) },
         logout = {
             viewModel.logout()
             navController.navigate(Graph.LOGIN) {
@@ -29,7 +29,8 @@ fun MyProfileScreen(
                 }
             }
         },
+        sendState = editState,
         myPosts = state,
-        deletePost = { viewModel.deletePost(it) }
+        actions = viewModel
     )
 }

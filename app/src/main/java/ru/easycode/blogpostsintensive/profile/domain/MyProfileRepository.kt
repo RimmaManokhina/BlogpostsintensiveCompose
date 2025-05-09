@@ -12,5 +12,7 @@ interface MyProfileRepository {
 
     suspend fun createPost(text: String): List<BlogPost>
 
+    suspend fun edit(postId: String, text: String, ): List<BlogPost>
+
     suspend fun deletePost(postId: String): List<BlogPost>
 }

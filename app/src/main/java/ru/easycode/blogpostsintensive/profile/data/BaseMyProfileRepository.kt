@@ -6,11 +6,13 @@ import ru.easycode.blogpostsintensive.common.PostCloud
 import ru.easycode.blogpostsintensive.common.UserProfileCloud
 import ru.easycode.blogpostsintensive.domain.BlogPost
 import ru.easycode.blogpostsintensive.profile.domain.MyProfileRepository
+import ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.core.DateConverter
 import javax.inject.Inject
 
 class BaseMyProfileRepository @Inject constructor(
     private val service: Service,
     private val myUser: MyUser,
+    private val dateConverter: DateConverter,
 ) : MyProfileRepository {
 
     private var postsCount = 0
@@ -52,6 +54,29 @@ class BaseMyProfileRepository @Inject constructor(
                 post = text,
             )
         )
+        return init()
+    }
+
+    override suspend fun edit(
+        postId: String,
+        text: String
+    ): List<BlogPost> {
+        val path = "posts_${myUser.id()}"
+
+        service.updateField(
+            path = path,
+            child = postId,
+            fieldId = "post",
+            fieldValue = text
+        )
+
+        service.updateField(
+            path = path,
+            child = postId,
+            fieldId = "editedAt",
+            fieldValue = dateConverter.getUTCDate()
+        )
+
         return init()
     }
 

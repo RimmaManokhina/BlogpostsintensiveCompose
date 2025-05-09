@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.easycode.blogpostsintensive.core.ScreenPreview
 import ru.easycode.blogpostsintensive.profile.my.MyProfileAndLogOut
-import ru.easycode.blogpostsintensive.profile.my.SendPost
 import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 
 /**
@@ -22,10 +21,10 @@ import ru.easycode.blogpostsintensive.ui.theme.BlogpostsintensiveTheme
 @Composable
 fun MyProfileContent(
     userName: String,
-    clickSendPost: (String) -> Unit,
     logout: () -> Unit,
     myPosts: List<MyPost>,
-    deletePost: (String) -> Unit
+    sendState: SendPostUiState,
+    actions: PostActions
 ) {
 
     Column(
@@ -37,10 +36,12 @@ fun MyProfileContent(
         MyProfileAndLogOut(name = userName, logout)
         LazyColumn(modifier = Modifier.weight(1f)) {
             items(myPosts.count()) { index ->
-                myPosts[index].Show(deletePost)
+                myPosts[index].Show(actions)
             }
         }
-        SendPost(handlePost = clickSendPost)
+
+        sendState.Show()
+
         //todo: BottomBar закрывает нижнее пространство для этого сделала спейсер.
         // Костыль, возможно нужно будет исправить.
         Spacer(modifier = Modifier.height(100.dp))
@@ -54,18 +55,17 @@ fun MyProfileScreenPreview() {
     BlogpostsintensiveTheme {
         MyProfileContent(
             userName = "userName",
-            clickSendPost = {},
             logout = {},
             myPosts = listOf(
                 MyPost.Base(
-                    BlogPostUi.Base(
-                        message = "message",
-                        id = "14",
-                        ownerId = "5"
-                    )
+                    post = BlogPostUi.Base(
+                        message = "message"
+                    ),
+                    postId = "14"
                 )
             ),
-            deletePost = {}
+            sendState = SendPostUiState.Empty,
+            actions = PostActions.Empty
         )
     }
 }
