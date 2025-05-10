@@ -7,6 +7,7 @@ import ru.easycode.blogpostsintensive.core.BaseViewModel
 import ru.easycode.blogpostsintensive.core.RunAsync
 import ru.easycode.blogpostsintensive.core.UserMapper
 import ru.easycode.blogpostsintensive.domain.BlogPost
+import ru.easycode.blogpostsintensive.profile.data.ShareInfo
 import ru.easycode.blogpostsintensive.profile.domain.CreatePost
 import ru.easycode.blogpostsintensive.profile.domain.MyProfileRepository
 import javax.inject.Inject
@@ -70,6 +71,10 @@ class MyProfileViewModel @Inject constructor(
         runAsync({
             repository.deletePost(postId)
         }, showUi)
+
+    override fun shareInfo(blogPostUi: BlogPostUi): ShareInfo {
+        return ShareInfo(userInfo(), blogPostUi.message())
+    }
 }
 
 class BaseBlogPostMapper @Inject constructor() : BlogPost.Mapper<MyPost> {
@@ -99,12 +104,21 @@ interface DeletePost {
     fun deletePost(postId: String)
 }
 
-interface PostActions : EditPost, DeletePost {
+interface SharePost {
+    fun shareInfo(blogPostUi: BlogPostUi): ShareInfo
+
+}
+
+interface PostActions : EditPost, DeletePost, SharePost {
 
     // only for Preview
     object Empty : PostActions {
         override fun editPost(id: String, message: String) = Unit
 
         override fun deletePost(postId: String) = Unit
+
+        override fun shareInfo(blogPostUi: BlogPostUi): ShareInfo {
+            return ShareInfo("", "")
+        }
     }
 }

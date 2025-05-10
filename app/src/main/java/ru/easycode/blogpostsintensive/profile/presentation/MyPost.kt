@@ -11,6 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import ru.easycode.blogpostsintensive.profile.other.ru.easycode.blogpostsintensive.profile.presentation.ShareButton
 
 interface MyPost {
 
@@ -41,10 +42,11 @@ interface MyPost {
                         EditButton { actions.editPost(postId, post.message()) }
 
                         DeleteButton { actions.deletePost(postId) }
+
+                        ShareButton(shareInfo = actions.shareInfo(post))
                     }
                 }
             }
         }
     }
 }
-
