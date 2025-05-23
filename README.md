@@ -1,0 +1,1 @@
+This is a Blogposts App developed by a team during a one-week Hackathon. We refactored the previous XML-based version by implementing Jetpack Compose, Hilt for dependency injection, MVVM architecture and Kotlin Flow for reactive data handling.
